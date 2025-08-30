@@ -1,0 +1,34 @@
+/dts-v1/;
+/plugin/;
+
+/**
+ * This demonstrates the creation of a device tree overlay for the Luckfox Lyra
+ * It adds a device with a label, a value, and a gpio
+ */
+
+//#include <dt-bindings/clock/rockchip,rk3506-cru.h>
+#include <dt-bindings/gpio/gpio.h>
+//#include <dt-bindings/interrupt-controller/irq.h>
+//#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/pinctrl/rockchip.h>
+//#include <dt-bindings/soc/rockchip,boot-mode.h>
+//#include <dt-bindings/suspend/rockchip-rk3506.h>
+
+//#include "rk3506-pinctrl.dtsi"
+//#include "rk3506-pinctrl-rmio.dtsi"
+
+/ {
+    compatible = "rockchip,rk3506";
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            my_device {
+                compatible = "picocalc,gpio";
+                status = "okay";
+                label = "Test";
+                my_value = <12>;
+                led-gpio-gpios = <&gpio0 RK_PB4 0>;
+            };
+        };
+    };
+};
