@@ -1,11 +1,12 @@
 dtbo = testoverlay
+KERNELSRC = ../lyra-sdk/kernel-6.1/
 
 all: dt
 	echo Built Device Tree Overlay
 
 dt: testoverlay.dts
-	cpp  -I ./include -I ./dts -undef -x assembler-with-cpp $(dtbo).dts $(dtbo).preproccessed
-	dtc -@ -I dts -O dtb -i ./dts -o $(dtbo).dtbo $(dtbo).preproccessed
+	cpp  -I $(KERNELSRC)/include -I $(KERNELSRC)/arch/arm/boot/dts -undef -x assembler-with-cpp $(dtbo).dts $(dtbo).preproccessed
+	dtc -@ -I dts -O dtb -i $(KERNELSRC)/arch/arm/boot/dts -o $(dtbo).dtbo $(dtbo).preproccessed
 
 clean:
 	rm -rf $(dtbo).dtbo
