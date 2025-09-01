@@ -9,3 +9,6 @@ picocalc-sd-*.img
 Luckfox-Lyra-B-pinout.jpg
 devicetree-overlay/*.dtbo
 *.preproccessed
+qemu-arm/linux-6.1.99/
+qemu-arm/qemu-fs/
+qemu-arm/*.img
